@@ -12,28 +12,28 @@ Route::middleware(['api'])
     ->group(function () {
 
     // API: CONTRACT TYPES
-    Route::get("contracts/categories", [TypesController::class, 'index'])->middleware(['auth:api']); // get entire collection
-    Route::post("contracts/categories", [TypesController::class, 'store'])->middleware(['auth:api']); // create new collection
+    Route::get("contracts/types", [TypesController::class, 'index'])->middleware(['auth:api']); // get entire collection
+    Route::post("contracts/types", [TypesController::class, 'store'])->middleware(['auth:api']); // create new collection
 
-    Route::get("contracts/categories/trash", [TypesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
+    Route::get("contracts/types/trash", [TypesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
 
-    Route::post("contracts/categories/import", [TypesController::class, 'import'])->middleware(['auth:api']); // import collection from external
-    Route::post("contracts/categories/export", [TypesController::class, 'export'])->middleware(['auth:api']); // export entire collection
-    Route::get("contracts/categories/report", [TypesController::class, 'report'])->middleware(['auth:api']); // report collection
+    Route::post("contracts/types/import", [TypesController::class, 'import'])->middleware(['auth:api']); // import collection from external
+    Route::post("contracts/types/export", [TypesController::class, 'export'])->middleware(['auth:api']); // export entire collection
+    Route::get("contracts/types/report", [TypesController::class, 'report'])->middleware(['auth:api']); // report collection
 
-    Route::get("contracts/categories/{id}/trashed", [TypesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
+    Route::get("contracts/types/{id}/trashed", [TypesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
 
     // RESTORE data by ID (id), selected IDs (selected), and All data (all)
-    Route::post("contracts/categories/{id}/restore", [TypesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
+    Route::post("contracts/types/{id}/restore", [TypesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
 
     // DELETE data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("contracts/categories/{id}/delete", [TypesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
+    Route::delete("contracts/types/{id}/delete", [TypesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
 
-    Route::get("contracts/categories/{id}", [TypesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
-    Route::put("contracts/categories/{id}", [TypesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
-    Route::patch("contracts/categories/{id}", [TypesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
+    Route::get("contracts/types/{id}", [TypesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
+    Route::put("contracts/types/{id}", [TypesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
+    Route::patch("contracts/types/{id}", [TypesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("contracts/categories/{id}", [TypesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
+    Route::delete("contracts/types/{id}", [TypesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
 
     // API: CONTRACTS
