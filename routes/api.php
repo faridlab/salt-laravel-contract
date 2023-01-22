@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use SaltContract\Controllers\ContractsController;
 use SaltContract\Controllers\TypesController;
+use SaltContract\Controllers\NestedDiscussionsController;
+use SaltContract\Controllers\NestedFilesController;
 
 $version = config('app.API_VERSION', 'v1');
 
@@ -60,4 +62,9 @@ Route::middleware(['api'])
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
     Route::delete("contracts/{id}", [ContractsController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
+    // API: CONTRACTS DISCUSSIONS
+    Route::resource('contracts.discussions', NestedDiscussionsController::class);
+
+    // API: CONTRACTS FILES
+    Route::resource('contracts.files', NestedFilesController::class);
 });
