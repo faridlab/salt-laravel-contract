@@ -24,10 +24,10 @@ return new class extends Migration
             $table->foreignUuid('type_id')->references('id')->on('sysparams')->comment('Contract Type');
             $table->foreignUuid('client_id')->references('id')->on('contacts');
 
-            $table->char('value_contract', 12, 2);
+            $table->float('value_contract', 12, 2);
             $table->char('base_currency', 3)->default('USD')->comment('USD, JPY, EUR, IDR');
             $table->char('exchange_currency', 3)->default('USD')->comment('USD, JPY, EUR, IDR');
-            $table->char('exchange_value', 12, 2)->default(0);
+            $table->float('exchange_value', 12, 2)->default(0);
 
             $table->text('address_alternative')->nullable()->comment('client alternative address');
             $table->text('note')->nullable();
